@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analizador Estructural | AE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">AE</span><span><b>Analizador Estructural</b><small>Herramienta académica de análisis 2D</small></span></a>
+    <span class="top-pill">VERSIÓN ACADÉMICA 1.0</span>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <p class="side-label">MÓDULOS</p>
+      <button class="nav active" data-kind="beam"><span>▰</span> Vigas</button>
+      <button class="nav" data-kind="column"><span>▥</span> Columnas</button>
+      <button class="nav" data-kind="portal"><span>⌗</span> Pórticos</button>
+      <div class="side-note"><b>Nota técnica</b><p>Verifica siempre los resultados con procedimientos manuales y criterios de ingeniería antes de utilizarlos en un diseño real.</p></div>
+    </aside>
+    <section class="content">
+      <div class="heading">
+        <div><span class="eyebrow">ANÁLISIS ESTRUCTURAL</span><h1 id="page-title">Análisis de vigas</h1><p id="page-subtitle">Calcula reacciones y visualiza los diagramas internos de una viga simplemente apoyada.</p></div>
+        <span class="status"><i></i> Listo para analizar</span>
+      </div>
+      <div class="work-grid">
+        <section class="panel input-panel">
+          <div class="panel-head"><div><h2>Datos de entrada</h2><p>Ingresa las dimensiones y cargas del modelo.</p></div><span class="step">01</span></div>
+          <form id="analysis-form">
+            <div id="fields"></div>
+            <button class="primary" type="submit">Calcular esfuerzos <span>→</span></button>
+          </form>
+          <p class="form-hint">Unidades: longitudes en m, fuerzas en kN y momentos en kN·m.</p>
+        </section>
+        <section class="panel model-panel">
+          <div class="panel-head"><div><h2>Modelo estructural</h2><p>Esquema conceptual del caso seleccionado.</p></div><span class="step">02</span></div>
+          <div id="model-visual" class="model-visual"></div>
+          <div class="legend"><span><i class="blue-dot"></i> Estructura</span><span><i class="orange-dot"></i> Cargas aplicadas</span><span><i class="gray-dot"></i> Apoyos</span></div>
+        </section>
+      </div>
+      <section id="results" class="results-section hidden">
+        <div class="result-title"><div><span class="eyebrow">SALIDA DEL SISTEMA</span><h2>Resultados del análisis</h2></div><span class="success-tag">Cálculo completado</span></div>
+        <div id="result-kind" class="result-kind"></div>
+        <div id="reactions" class="reaction-grid"></div>
+        <div id="charts" class="charts-grid"></div>
+        <div id="notes" class="notes"></div>
+      </section>
+      <div id="error" class="error hidden"></div>
+      <footer>Analizador Estructural · Proyecto académico · No usar como único medio para diseño o construcción.</footer>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
